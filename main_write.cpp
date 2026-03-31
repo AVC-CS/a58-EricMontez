@@ -5,23 +5,35 @@ using namespace std;
 
 int main()
 {
-    int N;
+    int numStudents;
     double score1, score2;
     string stuName;
-    ofstream ofs;
+    ofstream file;
 
-    // TODO: open "students.txt" for writing
+    // Open "students.txt" for writing
+    file.open("Students.txt");
 
-    // TODO: check if file opened successfully; print error and exit if not
+    // Check if file opened successfully; print error and exit if not
+        if (!file.is_open())
+        {
+            cerr << "Error: Could not open file for writing." << endl;
+            return 1; // Exit with an error code
+        }
+        
 
+    // Read numStudents from cin, write numStudents to file
     cout << "Enter the total number of students:";
-    // TODO: read N from cin, write N to ofs
+    cin >> numStudents;
+    file << numStudents << endl;
 
-    for (int i = 0; i < N; i++)
+    // Read stuName, score1, score2 from cin; write them to file
+    for (int i = 0; i < numStudents; i++)
     {
         cout << "Enter the student name and two scores: ";
-        // TODO: read stuName, score1, score2 from cin; write them to ofs
+        cin >> stuName >> score1 >> score2;
+        file << stuName << " " << score1 << " " << score2 << endl;
     }
-    // TODO: close ofs
+    // Close file
+    file.close();
     return 0;
 }
